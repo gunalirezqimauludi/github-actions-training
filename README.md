@@ -16,26 +16,26 @@ GitHub CI/CD Service - Deploy To Shared Hosting With Github Actions
    name: 🚀 Deploy website on push
 
    on:
-       push:
-           branches: [ main ]
+   push:
+      branches: [ main ]
 
    jobs:
-       web-deploy:
-           name: 🎉 Deploy
-           runs-on: ubuntu-latest
-           steps:
-           - name: 🚚 Get latest code
-           uses: actions/checkout@v2
-           - name: 📂 Sync files
-           uses: burnett01/rsync-deployments@4.1
-           with:
-               switches: -avzr --delete --exclude="" --include="" --filter=""
-               path: /
-               remote_path: ${{ secrets.REMOTE_PATH }}
-               remote_host: ${{ secrets.REMOTE_HOST }}
-               remote_port: ${{ secrets.REMOTE_PORT }}
-               remote_user: ${{ secrets.REMOTE_USER }}
-               remote_key: ${{ secrets.REMOTE_PRIVATE_KEY }}
+   web-deploy:
+      name: 🎉 Deploy
+      runs-on: ubuntu-latest
+      steps:
+      - name: 🚚 Get latest code
+         uses: actions/checkout@v2
+      - name: 📂 Sync files
+         uses: burnett01/rsync-deployments@4.1
+         with:
+         switches: -avzr --delete --exclude="" --include="" --filter=""
+         path: /
+         remote_path: ${{ secrets.REMOTE_PATH }}
+         remote_host: ${{ secrets.REMOTE_HOST }}
+         remote_port: ${{ secrets.REMOTE_PORT }}
+         remote_user: ${{ secrets.REMOTE_USER }}
+         remote_key: ${{ secrets.REMOTE_PRIVATE_KEY }}
    ```
 
 3. Create a SSH keys on this folder
